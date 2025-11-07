@@ -78,6 +78,30 @@
             text-decoration: underline;
         }
 
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form input, form textarea, form button {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        form button {
+            background-color: var(--orange);
+            color: var(--blanc);
+            border: none;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #ff8c00;
+        }
+
         footer {
             text-align: center;
             padding: 20px;
@@ -107,8 +131,8 @@
             <h2>Compétences</h2>
             <ul>
                 <li>Coder en Python</li>
-				<li>Coder en JavaScript</li>
-				<li>Apprend à coder en C</li>
+                <li>Coder en JavaScript</li>
+                <li>Apprend à coder en C</li>
                 <li>Responsable staff de la Cam Team</li>
                 <li>Fondateur de <a href="https://discord.gg/TDjzUjYpKc" target="_blank">Kytrix</a> (bot Discord français polyvalent)</li>
                 <li>Modérateur chez <a href="https://discord.gg/pub" target="_blank">Team Pub</a></li>
@@ -122,6 +146,16 @@
                 <li>GitHub : <a href="https://github.com/lumi2225" target="_blank">lumi2225</a></li>
                 <li>Twitch : <a href="https://m.twitch.tv/l9k_fn/home?tt_content=channel&tt_medium=mobile_web_share" target="_blank">l9k_fn</a></li>
             </ul>
+        </section>
+
+        <section>
+            <h2>Contact</h2>
+            <form action="mailto:L9K@Kytrix.fr" method="post" enctype="text/plain">
+                <input type="text" name="Nom" placeholder="Votre nom" required>
+                <input type="email" name="Email" placeholder="Votre email" required>
+                <textarea name="Message" rows="5" placeholder="Votre message" required></textarea>
+                <button type="submit">Envoyer</button>
+            </form>
         </section>
     </main>
 
