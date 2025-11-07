@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site en Maintenance</title>
+  <style>
+    /* --- Style global --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background: radial-gradient(circle at 30% 30%, #0f2027, #203a43, #2c5364);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      position: relative;
+      perspective: 1000px;
+    }
+
+    /* --- Animation du fond --- */
+    .background {
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(0, 188, 212, 0.05) 0,
+        rgba(0, 188, 212, 0.05) 2px,
+        transparent 2px,
+        transparent 10px
+      );
+      animation: moveBackground 20s linear infinite;
+      z-index: 0;
+      transform: rotateX(60deg) scale(2);
+      filter: blur(3px);
+    }
+
+    @keyframes moveBackground {
+      from { transform: rotateX(60deg) translateY(0) scale(2); }
+      to { transform: rotateX(60deg) translateY(-200px) scale(2); }
+    }
+
+    /* --- Conteneur principal --- */
+    .container {
+      position: relative;
+      text-align: center;
+      z-index: 10;
+      animation: fadeIn 1.5s ease-out forwards;
+    }
+
+    /* --- Gears rotatifs --- */
+    .gears {
+      position: relative;
+      margin: 2rem auto;
+      width: 150px;
+      height: 150px;
+    }
+
+    .gear {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border: 10px solid #00bcd4;
+      border-radius: 50%;
+      animation: spin 6s linear infinite;
+      box-shadow: 0 0 25px rgba(0, 188, 212, 0.5);
+    }
+
+    .gear::before, .gear::after {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: #00bcd4;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .gear.small {
+      width: 70px;
+      height: 70px;
+      top: 60px;
+      left: 90px;
+      border: 8px solid #03a9f4;
+      animation: spinReverse 5s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes spinReverse {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
+    }
+
+    /* --- Titre --- */
+    h1 {
+      font-size: 3.2rem;
+      margin-bottom: 0.5rem;
+      color: #00e5ff;
+      text-shadow: 0 0 10px #00e5ff, 0 0 20px #00bcd4, 0 0 40px #00bcd4;
+      letter-spacing: 2px;
+      animation: glowPulse 2s infinite;
+    }
+
+    @keyframes glowPulse {
+      0%, 100% { text-shadow: 0 0 10px #00e5ff, 0 0 20px #00bcd4; }
+      50% { text-shadow: 0 0 25px #00e5ff, 0 0 45px #00bcd4; }
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #ccc;
+      margin-bottom: 1rem;
+      animation: fadeIn 2s ease-in;
+    }
+
+    /* --- Compteur --- */
+    .counter {
+      font-size: 1.8rem;
+      color: #fff;
+      text-shadow: 0 0 10px #00bcd4;
+      margin-top: 1rem;
+      animation: fadeInUp 1.5s ease-out;
+    }
+
+    /* --- Bouton de contact --- */
+    .contact-btn {
+      margin-top: 2rem;
+      background: linear-gradient(90deg, #00bcd4, #0097a7);
+      border: none;
+      color: white;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(0, 188, 212, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .contact-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(0, 188, 212, 0.7);
+    }
+
+    /* --- Animations diverses --- */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* --- Particules flottantes --- */
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      animation: floatParticle 10s infinite ease-in-out;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes floatParticle {
+      0%, 100% { transform: translateY(0) translateX(0); opacity: 0.4; }
+      50% { transform: translateY(-60px) translateX(20px); opacity: 0.8; }
+    }
+
+    .particle:nth-child(1) { width: 25px; height: 25px; top: 10%; left: 15%; animation-delay: 0s; }
+    .particle:nth-child(2) { width: 10px; height: 10px; top: 40%; left: 70%; animation-delay: 2s; }
+    .particle:nth-child(3) { width: 18px; height: 18px; top: 60%; left: 25%; animation-delay: 4s; }
+    .particle:nth-child(4) { width: 30px; height: 30px; top: 80%; left: 80%; animation-delay: 1s; }
+    .particle:nth-child(5) { width: 15px; height: 15px; top: 20%; left: 50%; animation-delay: 3s; }
+
+    footer {
+      margin-top: 2rem;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Fond animé -->
+  <div class="background"></div>
+
+  <!-- Particules -->
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+
+  <!-- Contenu principal -->
+  <div class="container">
+    <div class="gears">
+      <div class="gear"></div>
+      <div class="gear small"></div>
+    </div>
+
+    <h1>Maintenance en cours</h1>
+    <p>Notre équipe améliore actuellement l’expérience utilisateur.<br>Nous serons bientôt de retour !</p>
+
+    <div class="counter" id="counter">Reprise dans 00:00:00</div>
+
+    <button class="contact-btn" onclick="window.location.href='mailto:adresse@gmail.com'">
+      Contacter le support
+    </button>
+
+    <footer>© 2025 L9K - Réalisé par FIOGaming</footer>
+  </div>
+
+  <script>
+    // === CONFIGURATION DE LA DATE DE FIN ===
+    // 📅 Exemple : 7 novembre 2025 à 15h30
+    const targetDate = new Date("2025-11-07T15:30:00").getTime();
+
+    function updateCounter() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance <= 0) {
+        window.location.href = "1.html";
+        return;
+      }
+
+      const hours = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+      const minutes = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+      const seconds = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
+
+      document.getElementById("counter").textContent = `Reprise dans ${hours}:${minutes}:${seconds}`;
+    }
+
+    // Vérifie immédiatement et ensuite chaque seconde
+    updateCounter();
+    setInterval(updateCounter, 1000);
+  </script>
+</body>
+</html>
